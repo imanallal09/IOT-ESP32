@@ -278,6 +278,16 @@ input[type=submit]:hover {
 }
 
 
+tr:hover {background-color: coral;}
+th {
+  width:40px;
+  height:30px;
+  background-color:white;
+  color:orange;
+}
+table, th, td {
+  border: 1px solid;
+}
  
  </style>
 </head>
@@ -303,9 +313,14 @@ input[type=submit]:hover {
         </header>
     
      <?PHP
-      require_once 'database.php';
-      
-      ?>
+      require_once 'databasesensor.php';
+      $sqldata = $pdo->query('SELECT * FROM esptest');
+      //GET VALUES
+      $esptest = $sqldata->fetchall(PDO::FETCH_ASSOC);
+      //echo "<pre>";
+     //print_r($esptest);
+     echo "</pde>";
+   ?>
       <br><br>
       <div>
       <form class="formulair">
@@ -329,15 +344,30 @@ input[type=submit]:hover {
 </div>
 <div class="containerers">
      <form class="monitoting">
+      
      <h2>MONITORING</h2>
-      <label >
-        <h3>tempurature</h3>
-        <h3>   C°</h3>
-      </label>
-      <label >
-        <h3>humidity</h3>
-        <h3>   %</h3>
-      </label>
+     <table>
+     <thead>
+        <th scope="col">#</th>
+        <th scope="col">temperature</th>
+        <th scope="col">humidity</th>
+        <th scope="col"> status_read_sensor_dht11</th>
+     </thead>
+     <tbody>
+  <?php
+  foreach($esptest as $esptest){ 
+    ?>
+     <tr>
+    <td><?= $esptest['id'] ?></td>
+    <td><?= $esptest['temperature'] ?></td>
+    <td><?= $esptest['humidity'] ?></td>
+    <td><?= $esptest['status_read_sensor_dht11'] ?></td>
+</tr> 
+<?php  
+  }
+?> 
+</tbody>
+</table>
     </form>
 </div>     
 <div class="contrfr">
