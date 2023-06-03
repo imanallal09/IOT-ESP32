@@ -1,0 +1,23 @@
+CREATE TABLE SensorData (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    sensor VARCHAR(30) NOT NULL,
+    location VARCHAR(30) NOT NULL,
+    value1 VARCHAR(10),
+    value2 VARCHAR(10),
+    value3 VARCHAR(10),
+    reading_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+CREATE TABLE login ( 
+`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`username` varchar(100) NOT NULL, 
+`email` varchar(100) NOT NULL, 
+`password` varchar(100) NOT NULL 
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE esptest( 
+`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`temperature` int(255)NOT NULL,
+`humidity` int(255)NOT NULL
+);
